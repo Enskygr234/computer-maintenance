@@ -148,7 +148,7 @@ function renderStatus() {
     $('#status-icon').textContent = '✓';
     $('#status-title').textContent = 'Sistemin sağlıklı görünüyor';
     const last = state.store && state.store.lastClean;
-    $('#status-text').textContent = `Açık kalma süresi ${uptime(s.uptime)}. ${last ? `Son temizlik ${ago(last)}.` : 'Henüz temizlik yapılmadı; Temizlik sayfasından yer açabilirsin.'}`;
+    $('#status-text').textContent = `Açık kalma süresi: ${uptime(s.uptime)} · ${last ? `Son temizlik ${ago(last)}.` : 'Henüz temizlik yapılmadı; Temizlik sayfasından yer açabilirsin.'}`;
     $('#status-badge').textContent = 'İYİ';
   }
 }
