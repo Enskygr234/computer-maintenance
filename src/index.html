@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'">
+<title>SysMonitor | PC Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="titlebar"><span>SysMonitor</span></div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">⌘</div>
+      <span>Sys<span class="purple">Monitor</span></span>
+    </div>
+
+    <div>
+      <p class="menu-title">ANA MENÜ</p>
+      <nav>
+        <a class="nav-link active" data-page="overview" href="#">▦ <span>Genel Bakış</span></a>
+        <a class="nav-link" data-page="hardware" href="#">▤ <span>Donanım</span></a>
+        <a class="nav-link" data-page="performance" href="#">⌁ <span>Performans</span></a>
+        <a class="nav-link" data-page="activity" href="#">◷ <span>Aktiviteler</span></a>
+      </nav>
+    </div>
+
+    <div>
+      <p class="menu-title">BAKIM</p>
+      <nav>
+        <a class="nav-link" data-page="maintenance" href="#">✧ <span>Temizlik</span></a>
+        <a class="nav-link" data-page="tools" href="#">⚒ <span>Araçlar</span></a>
+        <a class="nav-link" data-page="startup" href="#">⏻ <span>Başlangıç</span></a>
+        <a class="nav-link" data-page="settings" href="#">⚙ <span>Ayarlar</span></a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="online-dot"></div>
+      <div>
+        <strong id="sb-status">Canlı izleniyor</strong>
+        <small id="sb-version">SysMonitor v1.0.0</small>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="page-eyebrow">SİSTEM MERKEZİ</p>
+        <h1><span id="page-title">Genel Bakış</span> <span class="wave">✦</span></h1>
+        <p class="subtitle" id="page-subtitle">Bilgisayarının durumunu tek yerden takip et.</p>
+      </div>
+      <div class="profile">
+        <div class="profile-icon">PC</div>
+        <div>
+          <strong id="pc-name">Bilgisayarım</strong>
+          <small id="pc-os">Yerel cihaz</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ GENEL BAKIŞ ============ -->
+    <div class="page active" id="page-overview">
+      <section class="status-banner" id="status-banner">
+        <div class="status-icon" id="status-icon">✓</div>
+        <div>
+          <strong id="status-title">Sistem kontrol ediliyor…</strong>
+          <p id="status-text">Veriler toplanıyor.</p>
+        </div>
+        <span class="status-badge" id="status-badge">CANLI</span>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <div>
+            <h2>Performans</h2>
+            <p>Donanım kullanım istatistikleri</p>
+          </div>
+          <span class="live-label"><i class="pulse"></i> Canlı veriler</span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card purple-card" data-goto="performance">
+            <div class="card-top">
+              <span class="stat-icon">◉</span>
+              <span class="card-label">İŞLEMCİ</span>
+              <span class="dots">•••</span>
+            </div>
+            <div class="stat-value"><b data-bind="cpu">0</b><span>%</span></div>
+            <div class="progress"><div class="progress-fill purple-fill" data-bar="cpu"></div></div>
+            <div class="stat-footer"><span>CPU kullanımı</span><strong data-bind="cpu-state">Normal</strong></div>
+          </article>
+
+          <article class="stat-card blue-card" data-goto="performance">
+            <div class="card-top">
+              <span class="stat-icon">▤</span>
+              <span class="card-label">BELLEK</span>
+              <span class="dots">•••</span>
+            </div>
+            <div class="stat-value"><b data-bind="ram">0</b><span>%</span></div>
+            <div class="progress"><div class="progress-fill blue-fill" data-bar="ram"></div></div>
+            <div class="stat-footer"><span>RAM kullanımı</span><strong data-bind="ram-detail">–</strong></div>
+          </article>
+
+          <article class="stat-card green-card" data-goto="performance">
+            <div class="card-top">
+              <span class="stat-icon">◈</span>
+              <span class="card-label">EKRAN KARTI</span>
+              <span class="dots">•••</span>
+            </div>
+            <div class="stat-value"><b data-bind="gpu">0</b><span>%</span></div>
+            <div class="progress"><div class="progress-fill green-fill" data-bar="gpu"></div></div>
+            <div class="stat-footer"><span>GPU kullanımı</span><strong data-bind="gpu-state">Normal</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel">
+          <div class="panel-title">
+            <h3>Kullanım Geçmişi</h3>
+            <div class="pill-group" id="range-pills">
+              <button class="pill" data-range="5">5 dk.</button>
+              <button class="pill" data-range="15">15 dk.</button>
+              <button class="pill active" data-range="60">Son 60 dk.</button>
+            </div>
+          </div>
+          <p class="subtitle">CPU, RAM ve GPU kullanım grafiği</p>
+
+          <div class="chart-legend">
+            <span><i style="background:#9870ff"></i>CPU</span>
+            <span><i style="background:#42caff"></i>RAM</span>
+            <span><i style="background:#4de0ad"></i>GPU</span>
+          </div>
+
+          <div class="chart" id="chart">
+            <svg viewBox="0 0 500 165" preserveAspectRatio="none" role="img" aria-label="CPU, RAM ve GPU kullanım grafiği">
+              <defs>
+                <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#9870ff"/>
+                  <stop offset="100%" stop-color="#9870ff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="chart-area" id="chart-area" d=""/>
+              <polyline class="chart-line chart-green" id="line-gpu" points=""/>
+              <polyline class="chart-line chart-blue" id="line-ram" points=""/>
+              <polyline class="chart-line chart-purple" id="line-cpu" points=""/>
+              <line id="chart-cursor" x1="0" x2="0" y1="0" y2="165"/>
+            </svg>
+            <div class="chart-tip" id="chart-tip"></div>
+            <div class="chart-empty" id="chart-empty">Grafik birkaç saniye içinde dolmaya başlayacak…</div>
+          </div>
+          <div class="chart-labels" id="chart-labels">
+            <span>60 dk. önce</span><span>45 dk.</span><span>30 dk.</span><span>15 dk.</span><span>Şimdi</span>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h3>Donanım Bilgileri</h3>
+            <button class="pill" data-goto="hardware">Cihaz →</button>
+          </div>
+          <div class="hardware-list" id="hw-summary">
+            <div class="hardware-row"><div class="hardware-icon">▣</div><div class="hardware-info"><strong>İşlemci</strong><small class="skeleton">Okunuyor…</small></div><span class="hardware-value">CPU</span></div>
+            <div class="hardware-row"><div class="hardware-icon">▤</div><div class="hardware-info"><strong>Bellek</strong><small class="skeleton">Okunuyor…</small></div><span class="hardware-value">–</span></div>
+            <div class="hardware-row"><div class="hardware-icon">◈</div><div class="hardware-info"><strong>Ekran kartı</strong><small class="skeleton">Okunuyor…</small></div><span class="hardware-value">GPU</span></div>
+            <div class="hardware-row"><div class="hardware-icon">▰</div><div class="hardware-info"><strong>Depolama</strong><small class="skeleton">Okunuyor…</small></div><span class="hardware-value">–</span></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="section panel" style="margin-top:20px">
+        <div class="panel-title">
+          <h3>Sistem Aktiviteleri</h3>
+          <button class="pill" data-goto="activity">Tümü →</button>
+        </div>
+        <div class="activity-list" id="activity-mini"></div>
+      </section>
+    </div>
+
+    <!-- ============ DONANIM ============ -->
+    <div class="page" id="page-hardware">
+      <div class="hw-grid" id="hw-detail">
+        <div class="panel"><p class="subtitle">Donanım bilgileri okunuyor…</p></div>
+      </div>
+    </div>
+
+    <!-- ============ PERFORMANS ============ -->
+    <div class="page" id="page-performance">
+      <section class="section">
+        <div class="stats-grid five">
+          <article class="stat-card purple-card mini">
+            <div class="card-top"><span class="stat-icon">◉</span><span class="card-label">İŞLEMCİ</span></div>
+            <div class="stat-value small"><b data-bind="cpu">0</b><span>%</span></div>
+            <svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none"><polyline data-spark="cpu" class="chart-line chart-purple" points=""/></svg>
+          </article>
+          <article class="stat-card blue-card mini">
+            <div class="card-top"><span class="stat-icon">▤</span><span class="card-label">BELLEK</span></div>
+            <div class="stat-value small"><b data-bind="ram">0</b><span>%</span></div>
+            <svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none"><polyline data-spark="ram" class="chart-line chart-blue" points=""/></svg>
+          </article>
+          <article class="stat-card green-card mini">
+            <div class="card-top"><span class="stat-icon">◈</span><span class="card-label">EKRAN KARTI</span></div>
+            <div class="stat-value small"><b data-bind="gpu">0</b><span>%</span></div>
+            <svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none"><polyline data-spark="gpu" class="chart-line chart-green" points=""/></svg>
+          </article>
+          <article class="stat-card amber-card mini">
+            <div class="card-top"><span class="stat-icon">⇣</span><span class="card-label">İNDİRME</span></div>
+            <div class="stat-value small"><b data-bind="rx">0</b><span data-bind="rx-unit">KB/s</span></div>
+            <div class="stat-footer"><span>Ağ alımı</span></div>
+          </article>
+          <article class="stat-card pink-card mini">
+            <div class="card-top"><span class="stat-icon">⇡</span><span class="card-label">YÜKLEME</span></div>
+            <div class="stat-value small"><b data-bind="tx">0</b><span data-bind="tx-unit">KB/s</span></div>
+            <div class="stat-footer"><span>Ağ gönderimi</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <div>
+            <h3>Çalışan Uygulamalar</h3>
+            <p class="subtitle" id="proc-summary">İşlemler okunuyor…</p>
+          </div>
+          <div class="toolbar">
+            <input class="search" id="proc-search" type="search" placeholder="Uygulama ara…">
+            <div class="pill-group" id="proc-sort">
+              <button class="pill active" data-sort="cpu">CPU</button>
+              <button class="pill" data-sort="mem">Bellek</button>
+            </div>
+          </div>
+        </div>
+        <div class="table" id="proc-table"></div>
+      </section>
+    </div>
+
+    <!-- ============ AKTİVİTELER ============ -->
+    <div class="page" id="page-activity">
+      <section class="panel">
+        <div class="panel-title">
+          <h3>Tüm Kayıtlar</h3>
+          <button class="pill" id="clear-activity">Kayıtları temizle</button>
+        </div>
+        <div class="activity-list" id="activity-full"></div>
+      </section>
+    </div>
+
+    <!-- ============ TEMİZLİK ============ -->
+    <div class="page" id="page-maintenance">
+      <section class="clean-hero panel">
+        <div class="clean-ring" id="clean-ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fg" id="ring-fg"/></svg>
+          <div class="ring-text"><b id="clean-total">–</b><small id="clean-total-label">Henüz taranmadı</small></div>
+        </div>
+        <div class="clean-copy">
+          <h2>Gereksiz dosya temizliği</h2>
+          <p class="subtitle">Geçici dosyaları, önbellekleri ve çöp kutusunu tarar. Neyin silineceğini sen seçersin; kişisel dosyalarına dokunulmaz.</p>
+          <div class="clean-actions">
+            <button class="btn primary" id="btn-scan">Taramayı başlat</button>
+            <button class="btn green" id="btn-clean" disabled>Seçilenleri temizle</button>
+          </div>
+          <p class="mini-note" id="clean-meta"></p>
+        </div>
+      </section>
+      <section class="panel" style="margin-top:17px">
+        <div class="panel-title"><h3>Kategoriler</h3><span class="pill" id="clean-state">Tarama bekleniyor</span></div>
+        <div class="clean-list" id="clean-list"></div>
+      </section>
+    </div>
+
+    <!-- ============ ARAÇLAR ============ -->
+    <div class="page" id="page-tools">
+      <div class="tools-grid" id="tools-grid"></div>
+      <p class="mini-note" style="margin-top:16px">🛡 işaretli araçlar yönetici izni ister; Windows onay penceresi açılır ve işlem ayrı bir pencerede çalışır.</p>
+    </div>
+
+    <!-- ============ BAŞLANGIÇ ============ -->
+    <div class="page" id="page-startup">
+      <section class="panel">
+        <div class="panel-title">
+          <div>
+            <h3>Windows ile açılan uygulamalar</h3>
+            <p class="subtitle">Çok sayıda başlangıç uygulaması açılışı yavaşlatır.</p>
+          </div>
+          <button class="pill" data-tool="startup">Windows ayarlarında yönet →</button>
+        </div>
+        <div class="table" id="startup-table"><p class="subtitle">Okunuyor…</p></div>
+      </section>
+    </div>
+
+    <!-- ============ AYARLAR ============ -->
+    <div class="page" id="page-settings">
+      <section class="panel settings">
+        <div class="setting">
+          <div><strong>Windows ile başlat</strong><small>Bilgisayar açılınca simge tepsisinde sessizce çalışsın</small></div>
+          <label class="switch"><input type="checkbox" data-setting="startWithWindows"><span></span></label>
+        </div>
+        <div class="setting">
+          <div><strong>Kapatınca tepsiye küçült</strong><small>Pencereyi kapatınca uygulama arka planda izlemeye devam eder</small></div>
+          <label class="switch"><input type="checkbox" data-setting="minimizeToTray"><span></span></label>
+        </div>
+        <div class="setting">
+          <div><strong>Uyarı bildirimleri</strong><small>Yüksek CPU, RAM kullanımı ve azalan disk alanı için bildirim gönder</small></div>
+          <label class="switch"><input type="checkbox" data-setting="alerts"><span></span></label>
+        </div>
+        <div class="setting">
+          <div><strong>CPU uyarı eşiği</strong><small>30 saniye bu değerin üstünde kalırsa uyar</small></div>
+          <div class="range"><input type="range" min="50" max="100" step="5" data-setting="cpuAlert"><b></b></div>
+        </div>
+        <div class="setting">
+          <div><strong>RAM uyarı eşiği</strong><small>Bellek kullanımı bu yüzdeyi geçerse uyar</small></div>
+          <div class="range"><input type="range" min="50" max="100" step="5" data-setting="ramAlert"><b></b></div>
+        </div>
+        <div class="setting">
+          <div><strong>Düşük disk alanı</strong><small>Boş alan bu yüzdenin altına inerse uyar</small></div>
+          <div class="range"><input type="range" min="5" max="30" step="1" data-setting="diskAlert"><b></b></div>
+        </div>
+        <div class="setting">
+          <div><strong>Yenileme aralığı</strong><small>Verilerin kaç saniyede bir güncelleneceği</small></div>
+          <div class="range"><input type="range" min="1" max="10" step="1" data-setting="interval"><b></b></div>
+        </div>
+      </section>
+      <section class="panel" style="margin-top:17px">
+        <div class="panel-title"><h3>Hakkında</h3><span class="pill" id="about-version">v1.0.0</span></div>
+        <p class="subtitle">SysMonitor, bilgisayarının sağlığını izleyen ve bakımını kolaylaştıran kişisel bir araçtır. Verilerin hiçbir yere gönderilmez; her şey bu bilgisayarda kalır.</p>
+      </section>
+    </div>
+
+    <footer class="footer" id="footer">SysMonitor © 2026 · Kişisel proje · Veriler yalnızca bu bilgisayarda kalır</footer>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

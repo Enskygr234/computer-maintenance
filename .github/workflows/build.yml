@@ -1,0 +1,60 @@
+name: Windows kurulum paketi
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Bağımlılıkları kur
+        run: npm install --no-audit --no-fund
+
+      - name: Setup.exe oluştur
+        run: npx electron-builder --win nsis --publish never
+
+      - name: Uygulamayı gerçek verilerle dene
+        continue-on-error: true
+        shell: pwsh
+        env:
+          SYSMON_SELFTEST: ${{ runner.temp }}\selftest
+        run: |
+          $p = Start-Process -FilePath "dist\win-unpacked\SysMonitor.exe" -PassThru
+          if (-not $p.WaitForExit(240000)) { $p.Kill(); Write-Host "zaman aşımı" }
+          Get-ChildItem "$env:SYSMON_SELFTEST" -ErrorAction SilentlyContinue
+          Get-Content "$env:SYSMON_SELFTEST\report.json" -ErrorAction SilentlyContinue | Select-Object -First 80
+
+      - name: Test çıktısını sakla
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selftest
+          path: ${{ runner.temp }}\selftest
+          if-no-files-found: ignore
+
+      - name: Releases'e yükle
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          gh release delete son-surum --cleanup-tag -y || true
+          gh release create son-surum dist/*.exe \
+            --title "SysMonitor v$VERSION" \
+            --notes "Windows için kurulum dosyası. **SysMonitor-Setup-$VERSION.exe** dosyasını indirip çalıştır. Windows SmartScreen uyarı verirse *Ek bilgi → Yine de çalıştır* de." \
+            --latest

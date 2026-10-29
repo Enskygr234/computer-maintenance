@@ -1,0 +1,42 @@
+{
+  "name": "sysmonitor",
+  "productName": "SysMonitor",
+  "version": "1.0.0",
+  "description": "Bilgisayarının durumunu tek yerden takip et ve bakımını yap.",
+  "author": "Enskygr234",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --publish never"
+  },
+  "dependencies": {
+    "systeminformation": "^5.23.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.enskygr234.sysmonitor",
+    "productName": "SysMonitor",
+    "copyright": "© 2026 Enskygr234",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.js", "preload.js", "lib/**/*", "src/**/*", "build/icon.png", "package.json"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SysMonitor",
+      "language": "1055",
+      "artifactName": "SysMonitor-Setup-${version}.${ext}",
+      "uninstallDisplayName": "SysMonitor"
+    }
+  }
+}
