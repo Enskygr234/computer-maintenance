@@ -1,0 +1,330 @@
+{
+  "errors": [],
+  "snapshot": {
+    "t": 1793303834504,
+    "cpu": 100,
+    "mem": {
+      "total": 17174360064,
+      "used": 3776667648,
+      "pct": 21.990150631093698
+    },
+    "gpu": 99,
+    "disks": [
+      {
+        "mount": "C:",
+        "fs": "C:",
+        "type": "NTFS",
+        "size": 160939618304,
+        "used": 131798380544,
+        "use": 81.89
+      },
+      {
+        "mount": "D:",
+        "fs": "D:",
+        "type": "NTFS",
+        "size": 236205371392,
+        "used": 1183416320,
+        "use": 0.5
+      }
+    ],
+    "net": {
+      "rx": 0,
+      "tx": 0
+    },
+    "uptime": 319.265
+  },
+  "snapshot_ms": 2575,
+  "hardware": {
+    "cpu": {
+      "brand": "AMD EPYC 9V45 96-Core Processor",
+      "cores": 2,
+      "threads": 4,
+      "speed": 2.6,
+      "temp": null
+    },
+    "mem": {
+      "total": 17174360064,
+      "modules": [
+        {
+          "size": 1073741824,
+          "type": "DRAM",
+          "clock": 0,
+          "maker": "Microsoft Corporation"
+        },
+        {
+          "size": 16106127360,
+          "type": "DRAM",
+          "clock": 0,
+          "maker": "Microsoft Corporation"
+        }
+      ]
+    },
+    "gpus": [
+      {
+        "model": "Microsoft Hyper-V Video",
+        "vendor": "Microsoft",
+        "vram": null
+      }
+    ],
+    "disks": [
+      {
+        "name": "Virtual_Disk NVME Premium",
+        "type": "SSD",
+        "size": 161059207680,
+        "iface": "NVMe",
+        "smart": "Ok"
+      },
+      {
+        "name": "Microsoft NVMe Direct Disk v2",
+        "type": "SSD",
+        "size": 236221816320,
+        "iface": "NVMe",
+        "smart": "Ok"
+      }
+    ],
+    "os": {
+      "name": "Microsoft Windows Server 2025 Datacenter 10.0.26100",
+      "build": "26100",
+      "arch": "x64",
+      "host": "runnervmdaln5"
+    },
+    "system": {
+      "maker": "Microsoft Corporation",
+      "model": "Virtual Machine"
+    },
+    "board": {
+      "maker": "Microsoft Corporation",
+      "model": "Virtual Machine"
+    },
+    "battery": null,
+    "net": [
+      {
+        "name": "Microsoft Azure Network Adapter",
+        "ip": "10.1.0.22",
+        "type": "wired",
+        "speed": null
+      }
+    ]
+  },
+  "hardware_ms": 5127,
+  "processes": {
+    "total": 153,
+    "top": [
+      {
+        "name": "svchost",
+        "pids": [
+          788,
+          1048,
+          1124,
+          1316,
+          1328,
+          1440,
+          1464,
+          1524,
+          1520,
+          1536,
+          1636,
+          1664,
+          1772,
+          1800,
+          1944,
+          1796,
+          2064,
+          2276,
+          2304,
+          2336,
+          2368,
+          2400,
+          2468,
+          2556,
+          2600,
+          2644,
+          2724,
+          2752,
+          2768,
+          2760,
+          2932,
+          2964,
+          2992,
+          3000,
+          2584,
+          3124,
+          3188,
+          3220,
+          3276,
+          3336,
+          3352,
+          3392,
+          3496,
+          3504,
+          3512,
+          3520,
+          3568,
+          3660,
+          3656,
+          3680,
+          3688,
+          3672,
+          3700,
+          3708,
+          3716,
+          4264,
+          4932,
+          4800,
+          5748,
+          6100,
+          5608,
+          5632,
+          5724,
+          6712,
+          716,
+          6968,
+          3096,
+          6896,
+          7304,
+          8072,
+          7940,
+          8104,
+          8996,
+          8604,
+          8840,
+          5308,
+          672,
+          3176,
+          6364,
+          2864,
+          4752
+        ],
+        "cpu": 1.5,
+        "mem": 1330720768,
+        "count": 81,
+        "memPct": 7.748298993622403
+      },
+      {
+        "name": "SysMonitor",
+        "pids": [
+          1240,
+          1364,
+          816,
+          7256
+        ],
+        "cpu": 0.1,
+        "mem": 320442368,
+        "count": 4,
+        "memPct": 1.8658183874442846
+      },
+      {
+        "name": "powershell",
+        "pids": [
+          5440,
+          6148
+        ],
+        "cpu": 0.1,
+        "mem": 195969024,
+        "count": 2,
+        "memPct": 1.1410557556131602
+      },
+      {
+        "name": "explorer",
+        "pids": [
+          3028
+        ],
+        "cpu": 0.4,
+        "mem": 168665088,
+        "count": 1,
+        "memPct": 0.9820749499339249
+      },
+      {
+        "name": "MsMpEng",
+        "pids": [
+          4092
+        ],
+        "cpu": 0.7,
+        "mem": 146423808,
+        "count": 1,
+        "memPct": 0.8525721334265373
+      }
+    ]
+  },
+  "processes_ms": 1463,
+  "startup": [
+    {
+      "name": "Service Fabric Local Cluster Manager",
+      "command": "C:\\PROGRA~1\\MICROS~4\\SERVIC~1\\Tools\\SERVIC~2\\SERVIC~1.EXE ",
+      "location": "Common Startup",
+      "user": "Public"
+    },
+    {
+      "name": "AzureArcSetup",
+      "command": "%windir%\\AzureArcSetup\\Systray\\AzureArcSysTray.exe",
+      "location": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "user": "Public"
+    },
+    {
+      "name": "SecurityHealth",
+      "command": "%windir%\\system32\\SecurityHealthSystray.exe",
+      "location": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "user": "Public"
+    }
+  ],
+  "startup_ms": 457,
+  "scan": [
+    {
+      "id": "userTemp",
+      "name": "Kullanıcı geçici dosyaları",
+      "desc": "%TEMP% klasöründeki eski kurulum ve uygulama artıkları",
+      "size": 417575806,
+      "count": 50
+    },
+    {
+      "id": "winTemp",
+      "name": "Windows geçici dosyaları",
+      "desc": "Windows\\Temp klasörü (bir kısmı yönetici izni ister)",
+      "size": 20649,
+      "count": 7
+    },
+    {
+      "id": "crash",
+      "name": "Çökme raporları",
+      "desc": "Uygulama çökme dökümleri ve hata raporları",
+      "size": 0,
+      "count": 0
+    },
+    {
+      "id": "browser",
+      "name": "Tarayıcı önbellekleri",
+      "desc": "Chrome, Edge, Brave ve Firefox önbelleği (açık tarayıcının kilitli dosyaları atlanır)",
+      "size": 96,
+      "count": 3
+    },
+    {
+      "id": "thumbs",
+      "name": "Küçük resim önbelleği",
+      "desc": "Gezginin klasör önizlemeleri; gerektiğinde yeniden oluşturulur",
+      "size": 4209712,
+      "count": 30
+    },
+    {
+      "id": "wu",
+      "name": "Windows Update indirmeleri",
+      "desc": "Kurulmuş güncellemelerin indirme artıkları (yönetici izni ister)",
+      "size": 33705144,
+      "count": 5
+    },
+    {
+      "id": "recycle",
+      "name": "Geri Dönüşüm Kutusu",
+      "desc": "Kutudaki dosyalar kalıcı olarak silinir",
+      "size": 0,
+      "count": 0
+    }
+  ],
+  "scan_ms": 418,
+  "flushdns": {
+    "ok": true,
+    "message": "DNS önbelleği temizlendi",
+    "name": "DNS önbelleğini temizle"
+  },
+  "flushdns_ms": 16,
+  "historyLength": 8
+}
