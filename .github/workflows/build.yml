@@ -39,22 +39,6 @@ jobs:
           Get-ChildItem "$env:SYSMON_SELFTEST" -ErrorAction SilentlyContinue
           Get-Content "$env:SYSMON_SELFTEST\report.json" -ErrorAction SilentlyContinue | Select-Object -First 80
 
-      - name: Test çıktısını sakla
-        if: always()
-        continue-on-error: true
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          D="$RUNNER_TEMP/selftest"
-          [ -d "$D" ] || exit 0
-          cd "$D"
-          git init -q
-          git checkout -q -b ci-selftest
-          git -c user.name=ci -c user.email=ci@localhost add -A
-          git -c user.name=ci -c user.email=ci@localhost commit -q -m "selftest ${{ github.sha }}"
-          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" ci-selftest
-
       - name: Releases'e yükle
         shell: bash
         env:
