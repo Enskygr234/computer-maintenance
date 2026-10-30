@@ -3,6 +3,7 @@
 <h1 align="center">SysMonitor</h1>
 <p align="center">Bilgisayarının durumunu tek yerden takip et, bakımını tek tıkla yap.</p>
 
+<p align="center"><sub>Fikir ve tasarım: <b>Enes</b> (<a href="https://github.com/Enskygr234">@Enskygr234</a>)</sub></p>
 <p align="center"><a href="../../releases/latest"><b>⬇ Windows için indir (Setup.exe)</b></a></p>
 
 <p align="center"><img src="docs/screenshots/genel-bakis.png" width="860" alt="SysMonitor genel bakış"></p>
@@ -50,3 +51,8 @@ npm run dist     # dist/ klasörüne Setup.exe üret
 `main` dalına yapılan her gönderimde GitHub Actions Windows üzerinde kurulum paketini derler, uygulamayı gerçek donanım verileriyle dener ve yeni `Setup.exe`'yi Releases'e yükler.
 
 Electron · systeminformation · saf HTML/CSS/JS
+
+## Yapımcılar
+
+- **Fikir ve tasarım:** Enes ([@Enskygr234](https://github.com/Enskygr234)) — SysMonitor arayüz tasarımı
+- **Kodlama:** Claude ile birlikte
