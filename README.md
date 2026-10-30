@@ -5,6 +5,17 @@
 
 <p align="center"><a href="../../releases/latest"><b>⬇ Windows için indir (Setup.exe)</b></a></p>
 
+<p align="center"><img src="docs/screenshots/genel-bakis.png" width="860" alt="SysMonitor genel bakış"></p>
+
+| | |
+|---|---|
+| <img src="docs/screenshots/performans.png" alt="Performans"> | <img src="docs/screenshots/temizlik.png" alt="Temizlik"> |
+| Çalışan uygulamalar ve ağ hızı | Gereksiz dosya temizliği |
+| <img src="docs/screenshots/donanim.png" alt="Donanım"> | <img src="docs/screenshots/araclar.png" alt="Araçlar"> |
+| Donanım bilgileri | Windows bakım araçları |
+
+<sub>Ekran görüntülerindeki donanım değerleri örnektir; uygulama kendi bilgisayarının gerçek verilerini gösterir.</sub>
+
 ---
 
 ## Neler yapar?
